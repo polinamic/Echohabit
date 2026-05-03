@@ -1,0 +1,47 @@
+# Gradle files
+.gradle/
+build/
+*.iml
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Generated files
+bin/
+gen/
+out/
+
+# Android Studio
+.idea/
+.DS_Store
+*.apk
+*.aab
+*.class
+
+# Signing files
+*.jks
+*.keystore
+
+# Build results
+/app/build
+/app/release
+/app/debug
+
+# TensorFlow Lite models (exclude binaries)
+/app/src/main/assets/models/*.tflite
+/app/src/main/assets/models/*.lite
+
+# IDE
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test coverage
+coverage/
+*.gcda
+*.gcno
