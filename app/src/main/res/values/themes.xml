@@ -1,17 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Nama harus SAMA PERSIS (Theme.EchoHabit) dengan yang di values biasa -->
-    <style name="Theme.EchoHabit" parent="Theme.MaterialComponents.NoActionBar">
-        <!-- Di sini kamu bisa menyesuaikan warna untuk mode malam -->
-        <item name="colorPrimary">@color/purple_200</item> 
-        <item name="colorPrimaryDark">@color/black</item>
-        <item name="colorAccent">@color/teal_200</item>
-    </style>
-
-    <!-- Tema Fullscreen untuk mode malam -->
-    <style name="Theme.App.Fullscreen" parent="Theme.EchoHabit">
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
-    </style>
+    <style name="Theme.EchoHabit" parent="android:Theme.Material.Light" />
 </resources>
