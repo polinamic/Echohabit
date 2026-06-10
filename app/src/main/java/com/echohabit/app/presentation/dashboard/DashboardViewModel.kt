@@ -18,13 +18,13 @@ sealed class DashboardEvent {
 class DashboardViewModel @Inject constructor(
     private val generateDailySummaryUseCase: GenerateDailySummaryUseCase
 ) : ViewModel() {
-    
+
     fun onEvent(event: DashboardEvent) {
         when (event) {
             is DashboardEvent.LoadDashboard -> loadDashboard()
         }
     }
-    
+
     private fun loadDashboard() {
         // Load dashboard data
     }

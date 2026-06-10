@@ -1,4 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.EchoHabit" parent="android:Theme.Material.Light" />
+
+    <style name="Theme.EchoHabit" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/navy_blue</item>
+        <item name="colorPrimaryVariant">@color/light_blue_bg</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/light_blue_bg</item>
+        <item name="colorOnSecondary">@color/navy_blue</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.EchoHabit.Splash" parent="Theme.EchoHabit">
+        <item name="android:windowBackground">@drawable/bg_splash</item>
+    </style>
+
+    <style name="AuthInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="boxCornerRadiusTopStart">20dp</item>
+        <item name="boxCornerRadiusTopEnd">20dp</item>
+        <item name="boxCornerRadiusBottomStart">20dp</item>
+        <item name="boxCornerRadiusBottomEnd">20dp</item>
+        <item name="android:elevation">4dp</item>
+        <item name="hintTextColor">@color/hint_gray</item>
+        <item name="android:textColorHint">@color/hint_gray</item>
+        <item name="hintEnabled">false</item>
+    </style>
+
 </resources>
