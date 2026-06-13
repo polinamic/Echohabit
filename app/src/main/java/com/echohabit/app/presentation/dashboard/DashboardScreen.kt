@@ -13,6 +13,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.echohabit.app.R
 import com.echohabit.app.presentation.awal.WelcomeActivity
+import com.echohabit.app.presentation.appusage.AppUsageScreen
 import com.echohabit.app.presentation.settings.SettingsScreen
 import com.google.firebase.auth.FirebaseAuth
 
@@ -96,4 +97,9 @@ fun MainScreen() {
     ) {
         Text("Main Screen", fontSize = 18.sp, color = Color(0xFF8A94A6))
     }
+}
+
+@Composable
+fun AppScreen() {
+    AppUsageScreen()
 }

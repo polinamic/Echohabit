@@ -2,8 +2,12 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'kotlin-parcelize'
     id 'com.google.dagger.hilt.android'
-    id 'com.google.gms.google-services'  // ← tambahan Firebase
+}
+
+if (file("google-services.json").exists()) {
+    apply plugin: 'com.google.gms.google-services'
 }
 
 android {
@@ -104,7 +108,7 @@ dependencies {
     // WorkManager (Background Tasks)
     implementation 'androidx.work:work-runtime-ktx:2.8.1'
 
-    // ── Firebase ─────────────────────────────────────────────────────────────
+    // â”€â”€ Firebase â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     implementation platform('com.google.firebase:firebase-bom:33.1.0')
     implementation 'com.google.firebase:firebase-auth-ktx'
     // firebase-firestore tidak dipakai (butuh billing)
@@ -114,7 +118,7 @@ dependencies {
 
     // LiveData support di Compose (observeAsState)
     implementation 'androidx.compose.runtime:runtime-livedata:1.6.7'
-    // ─────────────────────────────────────────────────────────────────────────
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     // Testing
     testImplementation 'junit:junit:4.13.2'

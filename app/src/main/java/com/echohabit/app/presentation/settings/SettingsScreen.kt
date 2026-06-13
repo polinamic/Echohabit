@@ -25,9 +25,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.graphics.drawable.toBitmap
+import com.echohabit.app.core.utils.firebaseAuthOrNull
 import com.echohabit.app.presentation.awal.WelcomeActivity
 import com.echohabit.app.presentation.onboarding.InstalledApp
-import com.google.firebase.auth.FirebaseAuth
 
 val NavyBlueS = Color(0xFF1A237E)
 val LightBlueS = Color(0xFF4A90D9)
@@ -89,7 +89,8 @@ fun SettingsMainScreen(
     onChangePasswordClick: () -> Unit
 ) {
     val context = LocalContext.current
-    val user = FirebaseAuth.getInstance().currentUser
+    val auth = firebaseAuthOrNull()
+    val user = auth?.currentUser
     var showLogoutDialog by remember { mutableStateOf(false) }
 
     val displayName = user?.displayName?.trim()?.ifBlank { null }
@@ -113,7 +114,7 @@ fun SettingsMainScreen(
             },
             confirmButton = {
                 TextButton(onClick = {
-                    FirebaseAuth.getInstance().signOut()
+                    auth?.signOut()
                     val intent = Intent(context, WelcomeActivity::class.java).apply {
                         flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     }
@@ -352,7 +353,8 @@ fun SettingsExcludeScreen(onBack: () -> Unit) {
 // ── Change Password ───────────────────────────────────────────────────────────
 @Composable
 fun ChangePasswordScreen(onBack: () -> Unit) {
-    val user = FirebaseAuth.getInstance().currentUser
+    val auth = firebaseAuthOrNull()
+    val user = auth?.currentUser
     val email = user?.email ?: ""
     var isSent by remember { mutableStateOf(false) }
     var isLoading by remember { mutableStateOf(false) }
@@ -432,13 +434,15 @@ fun ChangePasswordScreen(onBack: () -> Unit) {
                         onClick = {
                             isLoading = true
                             errorMsg = ""
-                            FirebaseAuth.getInstance()
-                                .sendPasswordResetEmail(email)
-                                .addOnSuccessListener { isLoading = false; isSent = true }
-                                .addOnFailureListener { e ->
+                            auth?.sendPasswordResetEmail(email)
+                                ?.addOnSuccessListener { isLoading = false; isSent = true }
+                                ?.addOnFailureListener { e ->
                                     isLoading = false
                                     errorMsg = e.message ?: "Failed to send email"
-                                }
+                                } ?: run {
+                                isLoading = false
+                                errorMsg = "Firebase is not configured for this build"
+                            }
                         },
                         modifier = Modifier.fillMaxWidth().height(50.dp),
                         shape = RoundedCornerShape(25.dp),
